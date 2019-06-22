@@ -2,13 +2,12 @@ var { Todo } = require('../../model/todoModel');
 var mongoose = require('mongoose');
 var generateTaskID = () => {
     var objID = (mongoose.Types.ObjectId().toHexString());
-
     var objIDResult = "T" + (objID.slice(objID.length - (1 + 5), objID.length));
     return objIDResult
 }
 var todoService = {
-    getTodoList: (req) => {
-        return Todo.find({userID: req.query.userID})
+    getTodoList: () => {
+        return Todo.find()
     },
     newTodo: (req) => {
         var newTaskID = generateTaskID()

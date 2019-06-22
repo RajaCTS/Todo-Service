@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const _ = require('lodash');
 const jwt = require('jsonwebtoken');
-const crypto = require('bcryptjs');
-
 var generateTaskID = () => {
     var objID = (mongoose.Types.ObjectId().toHexString());
     var objIDResult = "U_" + (objID.slice(objID.length - (1 + 3), objID.length));

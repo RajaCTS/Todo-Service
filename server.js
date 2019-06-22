@@ -17,7 +17,7 @@ app.use(function (req, res, next) {
 });
 
 app.get('/todos', (req, res) => {
-    todoService.getTodoList(req).then((result) => {
+    todoService.getTodoList().then((result) => {
         res.send({
             result,
             message: 'Success of getting Todos'
@@ -76,7 +76,7 @@ app.post('/newUser', (req, res) => {
 app.post('/login', (req, res) => {
     userService.login(req).then((result) => {
         if (result.errmsg) {
-            res.status(400).send(result)
+            res.status(401).send(result)
         } else {
             var resutlData = _.pick(result, ['userName', 'userID', 'emailID','msg']);
             res.header('autherization', result['x_auth']).send(resutlData);
